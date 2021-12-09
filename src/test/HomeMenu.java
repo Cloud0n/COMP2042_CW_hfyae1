@@ -30,17 +30,16 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
     private static final String GREETINGS = "Welcome to:";
     private static final String GAME_TITLE = "Brick Destroy";
-    private static final String CREDITS = "Version 0.1";
-    private static final String START_TEXT = "Start";
-    private static final String MENU_TEXT = "Exit";
+    private static final String CREDITS = "Edited by Ali Wael";
+    private static final String START_TEXT = "Start game";
+    private static final String MENU_TEXT = "Exit game";
 
     private static final Color BG_COLOR = new Color(255,102,102);
-    private static final Color BORDER_COLOR = new Color(255, 255, 204); //Venetian Red
-    private static final Color TEXT_COLOR = new Color(16, 52, 166);//egyptian blue
+    private static final Color BORDER_COLOR = new Color(255, 255, 204);
+    private static final Color TEXT_COLOR = new Color(166, 182, 241);
     private static final Color CLICKED_BUTTON_COLOR = BG_COLOR.brighter();
-    private static final Color CLICKED_TEXT = Color.WHITE;
+    private static final Color CLICKED_TEXT = new Color(0, 0, 0);
     private static final int BORDER_SIZE = 5;
-    private static final float[] DASHES = {12,6};
 
     private Rectangle menuFace;
     private Rectangle startButton;
@@ -80,7 +79,6 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         startButton = new Rectangle(btnDim);
         menuButton = new Rectangle(btnDim);
 
-        borderStoke = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND,0,DASHES,0);
         borderStoke_noDashes = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
 
         greetingsFont = new Font("Noto Mono",Font.PLAIN,25);
