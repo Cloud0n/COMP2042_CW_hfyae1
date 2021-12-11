@@ -19,6 +19,7 @@ package test;
 
 import javax.swing.*;
 import java.awt.*;
+
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -42,11 +43,9 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private static final int BORDER_SIZE = 5;
 
     private Rectangle menuFace;
-    private Rectangle startButton;
-    private Rectangle menuButton;
+    public Rectangle startButton;
+    public Rectangle menuButton;
 
-
-    private BasicStroke borderStoke;
     private BasicStroke borderStoke_noDashes;
 
     private Font greetingsFont;
@@ -240,12 +239,11 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
         }
 
     }
-
     @Override
     public void mouseClicked(MouseEvent mouseEvent) {
         Point p = mouseEvent.getPoint();
         if(startButton.contains(p)){
-           owner.enableGameBoard();
+            owner.enableGameBoard();
 
         }
         else if(menuButton.contains(p)){
@@ -305,4 +303,5 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
             this.setCursor(Cursor.getDefaultCursor());
 
     }
+
 }
