@@ -2,6 +2,7 @@
 package Main;
 
 import GUI.HomeMenu;
+import GUI.InfoPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,15 +13,22 @@ import java.awt.event.WindowFocusListener;
 
 public class GameFrame extends JFrame implements WindowFocusListener {
 
+    private Image icon;
+
     private static final String DEF_TITLE = "Brick Destroy";
 
     private GameBoard gameBoard;
     private HomeMenu homeMenu;
+    private InfoPage infoPage;
 
     private boolean gaming;
 
     public GameFrame(){
         super();
+
+        icon = Toolkit.getDefaultToolkit().getImage("Images/menubackground.png");
+        icon = icon.getScaledInstance(120,120, java.awt.Image.SCALE_SMOOTH);
+        this.setIconImage(icon);
 
         gaming = false;
 
@@ -29,6 +37,8 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         gameBoard = new GameBoard(this);
 
         homeMenu = new HomeMenu(this,new Dimension(1200,621));
+
+        infoPage = new InfoPage(this,new Dimension(1200,621));
 
         this.add(homeMenu,BorderLayout.CENTER);
 
@@ -49,6 +59,26 @@ public class GameFrame extends JFrame implements WindowFocusListener {
         this.dispose();
         this.remove(homeMenu);
         this.add(gameBoard,BorderLayout.CENTER);
+        this.setUndecorated(false);
+        initialize();
+        this.addWindowFocusListener(this);
+
+    }
+
+    public void enableInfoPage(){
+        this.dispose();
+        this.remove(homeMenu);
+        this.add(infoPage,BorderLayout.CENTER);
+        this.setUndecorated(false);
+        initialize();
+        this.addWindowFocusListener(this);
+
+    }
+
+    public void enableHomeMenu(){
+        this.dispose();
+        this.remove(infoPage);
+        this.add(homeMenu,BorderLayout.CENTER);
         this.setUndecorated(false);
         initialize();
         this.addWindowFocusListener(this);
