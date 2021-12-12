@@ -21,9 +21,16 @@ abstract public class Ball {
 
     private int speedX;
     private int speedY;
+    private int radiusA;
+    private int radiusB;
 
     public Ball(Point2D center,int radiusA,int radiusB,Color inner,Color border){
         this.center = center;
+        this.radiusA = radiusA;
+        this.radiusB = radiusB;
+        this.inner = inner;
+        this.border = border;
+
 
         up = new Point2D.Double();
         down = new Point2D.Double();
@@ -80,6 +87,10 @@ abstract public class Ball {
         speedY *= -1;
     }
 
+    public int getRadiusA(){return radiusA;}
+
+    public int getRadiusB(){return radiusB;}
+
     public Color getBorderColor(){
         return border;
     }
@@ -95,6 +106,24 @@ abstract public class Ball {
     public Shape getBallFace(){
         return ballFace;
     }
+
+    public Point2D getUp(){return up;}
+
+    public void setUp(Point2D up){this.up=up;}
+
+    public Point2D getDown(){return down;}
+
+    public void setDown(Point2D down){this.down=down;}
+
+    public Point2D getLeft(){return left;}
+
+    public void setLeft(Point2D left){this.left=left;}
+
+    public Point2D getRight(){return right;}
+
+    public void setRight(Point2D right){this.right=right;}
+
+    public void setBallFace(Shape ballFace){this.ballFace=ballFace;}
 
     public void moveTo(Point p){
         center.setLocation(p);

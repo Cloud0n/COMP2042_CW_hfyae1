@@ -5,13 +5,12 @@ import Main.GameFrame;
 
 import javax.swing.*;
 import java.awt.*;
-
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 
-public class HomeMenu extends JComponent implements MouseListener, MouseMotionListener {
+public class HomeMenu extends JLayeredPane implements MouseListener, MouseMotionListener {
 
     private static final Color BG_COLOR = new Color(255,102,102);
     private static final Color BORDER_COLOR = new Color(255, 255, 204);
@@ -20,6 +19,10 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
     private static final Color CLICKED_TEXT = new Color(0, 0, 0);
     private static final int BORDER_SIZE = 5;
 
+    /**private JLabel menubg = new JLabel();
+    private Image menubackground = new ImageLoad(ImageLoad.menubackground).getImage();
+    private ImageIcon menuIcon = new ImageIcon(menubackground);
+**/
     private Rectangle menuFace;
     public Rectangle startButton;
     public Rectangle menuButton;
@@ -50,7 +53,12 @@ public class HomeMenu extends JComponent implements MouseListener, MouseMotionLi
 
         this.owner = owner;
 
-
+        /**this.setLayout(null);
+        this.setSize(1200,621);
+        menubg.setBounds(0,0,1200,621);
+        menubg.setIcon(menuIcon);
+       this.add(menubg,DEFAULT_LAYER);
+**/
 
         menuFace = new Rectangle(new Point(0,0),area);
         this.setPreferredSize(area);
