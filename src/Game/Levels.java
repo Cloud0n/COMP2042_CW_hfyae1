@@ -60,10 +60,10 @@ public class Levels extends Wall {
         tmp[2] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,STEEL);
         tmp[3] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,CEMENT);
         tmp[4] = makeLevel(drawArea,60,6,brickDimensionRatio,CEMENT,CEMENT);
-        tmp[5] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CLAY);
-        tmp[6] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CEMENT);
-        tmp[7] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,STEEL);
-        tmp[8] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,STEEL,CEMENT);
+        tmp[5] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CONCRETE);
+        tmp[6] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CONCRETE,CEMENT);
+        tmp[7] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CARBON,STEEL);
+        tmp[8] = makeLevel(drawArea,200,20,brickDimensionRatio,CARBON,CARBON);
         return tmp;
     }
 }
