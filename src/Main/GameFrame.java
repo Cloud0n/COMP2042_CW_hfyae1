@@ -3,7 +3,7 @@ package Main;
 
 import GUI.HomeMenu;
 import GUI.InfoPage;
-import HighScore.HighScorePage;
+import GUI.HighScorePage;
 
 import javax.swing.*;
 import java.awt.*;

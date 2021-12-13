@@ -1,4 +1,6 @@
-package Main;
+package GUI;
+
+import Main.GameBoard;
 
 import java.awt.*;
 import java.awt.font.FontRenderContext;
@@ -23,7 +25,7 @@ public class PauseMenu {
 
     private Font menuFont;
 
-    private GameBoard GameBoard;
+    private Main.GameBoard GameBoard;
 
 
     /**

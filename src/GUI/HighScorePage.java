@@ -1,5 +1,6 @@
-package HighScore;
+package GUI;
 
+import HighScore.HighScore;
 import Main.GameFrame;
 
 import javax.swing.*;

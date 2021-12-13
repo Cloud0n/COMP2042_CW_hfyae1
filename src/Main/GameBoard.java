@@ -1,5 +1,6 @@
 package Main;
 
+import GUI.PauseMenu;
 import Game.Ball;
 import Game.Brick;
 import Game.Player;
@@ -38,7 +39,7 @@ public class GameBoard extends JComponent implements KeyListener,MouseListener,M
 
     private DebugConsole debugConsole;
 
-    private PauseMenu PauseMenu;
+    private GUI.PauseMenu PauseMenu;
 
 
     /**
