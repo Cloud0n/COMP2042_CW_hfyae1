@@ -6,6 +6,9 @@ import java.awt.geom.RectangularShape;
 
 public class ControlBall {
 
+    /**
+     * defines and creates ball
+     */
     private Ball ball;
 
     ControlBall(Ball ball) {
@@ -23,6 +26,10 @@ public class ControlBall {
     }
 
 
+    /**
+     * moves the ball depending on impact from player
+     * @param p moves ball to position p
+     */
     public void moveTo(Point p) {
         ball.getPosition().setLocation(p);
 
@@ -34,6 +41,11 @@ public class ControlBall {
         ball.setBallFace(tmp);
     }
 
+    /**
+     * sets ball shape
+     * @param width width of ball
+     * @param height height of ball
+     */
     private void setPoints(double width, double height) {
         ball.getUp().setLocation(ball.getPosition().getX(), ball.getPosition().getY() - (height / 2));
         ball.getDown().setLocation(ball.getPosition().getX(), ball.getPosition().getY() + (height / 2));
@@ -42,11 +54,19 @@ public class ControlBall {
         ball.getRight().setLocation(ball.getPosition().getX() + (width / 2), ball.getPosition().getY());
     }
 
+    /**
+     * sets ball speed
+     * @param x sets speed of x
+     * @param y sets speed of y
+     */
     public void setSpeed(int x, int y) {
         ball.setXSpeed(x);
         ball.setYSpeed(y);
     }
 
+    /**
+     * moves the ball position in correlation to impact with player
+     */
     public void move() {
         RectangularShape tmp = (RectangularShape) ball.getBallFace();
         ball.getPosition().setLocation((ball.getPosition().getX() + ball.getSpeedX()), (ball.getPosition().getY() + ball.getSpeedY()));
@@ -60,10 +80,18 @@ public class ControlBall {
         ball.setBallFace(tmp);
     }
 
+    /**
+     * gets x speed
+     * @return returns the x speed of the ball
+     */
     public int getSpeedX(){
         return ball.getSpeedX();
     }
 
+    /**
+     * gets y speed
+     * @return returns the y speed of the ball
+     */
     public int getSpeedY(){
         return ball.getSpeedY();
     }

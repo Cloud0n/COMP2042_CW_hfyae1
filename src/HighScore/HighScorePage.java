@@ -1,4 +1,4 @@
-package GUI;
+package HighScore;
 
 import Main.GameFrame;
 
@@ -10,15 +10,10 @@ import java.awt.event.MouseMotionListener;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
-public class InfoPage extends JComponent implements MouseListener, MouseMotionListener {
+public class HighScorePage extends JComponent implements MouseListener, MouseMotionListener {
 
-    private static final String INFO = "Info Page:";
-    private static final String SUB_INFO = "Brick Destroyer is a game that has been edited by Ali Wael.";
-    private static final String SUB_INFO2 ="Controls for this game are as follows:";
-    private static final String SUB_INFO3 ="A and D to move paddle left and right";
-    private static final String SUB_INFO4 =" F1 to open game debugger";
-    private static final String SUB_INFO5 ="ESC to pause and open escape menu.";
-    private static final String SUB_INFO6 =" Thank you for playing this game.";
+    private static final String INFO = "HighScore Page:";
+    JTextArea hsText=new JTextArea();
     private static final String EXIT_TEXT = "Exit";
 
     private static final Color BG_COLOR = new Color(162, 239, 226);
@@ -34,8 +29,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     private BasicStroke borderStoke_noDashes;
 
-    private Font infoFont;
-    private Font subinfoFont;
+    private Font hsFont;
     private Font buttonFont;
 
     private GameFrame owner;
@@ -43,11 +37,12 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     private boolean exitClicked;
 
     /**
-     * creates info menu
+     * creates a page to display all the scores
      * @param owner game frame object
-     * @param area area of info menu
+     * @param area area of scoreboard menu
      */
-    public InfoPage(GameFrame owner, Dimension area) {
+    public HighScorePage(GameFrame owner, Dimension area) {
+
         this.setFocusable(true);
         this.requestFocusInWindow();
 
@@ -66,8 +61,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
         borderStoke_noDashes = new BasicStroke(BORDER_SIZE,BasicStroke.CAP_ROUND,BasicStroke.JOIN_ROUND);
 
-        infoFont = new Font("Noto Mono",Font.PLAIN,40);
-        subinfoFont = new Font("Noto Mono",Font.BOLD,20);
+        hsFont = new Font("Noto Mono",Font.PLAIN,40);
         buttonFont = new Font("Monospaced",Font.PLAIN,exitButton.height-2);
 
 
@@ -93,7 +87,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     }
 
     /**
-     * draws the menu
+     * draws the Highscore board
      * @param g2d draws all the menu objects
      */
     public void drawMenu(Graphics2D g2d){
@@ -127,8 +121,8 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
     }
 
     /**
-     * creates a border around menu
-     * @param g2d draws container of menu
+     * creates a border around High Score
+     * @param g2d draws container of High score
      */
     private void drawContainer(Graphics2D g2d) {
 
@@ -150,7 +144,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     /**
      * creates text and draws them
-     * @param g2d draws text inside menuu
+     * @param g2d draws text inside High score
      */
     private void drawText(Graphics2D g2d){
 
@@ -158,65 +152,26 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
         FontRenderContext frc = g2d.getFontRenderContext();
 
-        Rectangle2D infoRect = infoFont.getStringBounds(INFO,frc);
-        Rectangle2D subinfoRect = subinfoFont.getStringBounds(SUB_INFO,frc);
-        Rectangle2D subinfo2Rect = subinfoFont.getStringBounds(SUB_INFO2,frc);
-        Rectangle2D subinfo3Rect = subinfoFont.getStringBounds(SUB_INFO3,frc);
-        Rectangle2D subinfo4Rect = subinfoFont.getStringBounds(SUB_INFO4,frc);
-        Rectangle2D subinfo5Rect = subinfoFont.getStringBounds(SUB_INFO5,frc);
-        Rectangle2D subinfo6Rect = subinfoFont.getStringBounds(SUB_INFO6,frc);
+        Rectangle2D infoRect = hsFont.getStringBounds(INFO,frc);
 
         int sX,sY;
 
         sX = (int)(menuFace.getWidth() - infoRect.getWidth()) / 2;
         sY = (int)(menuFace.getHeight() / 4);
 
-        g2d.setFont(infoFont);
+        g2d.setFont(hsFont);
         g2d.drawString(INFO,sX,sY);
 
-        sX = (int)(menuFace.getWidth() - subinfoRect.getWidth()) / 2;
-        sY += (int) subinfoRect.getHeight() * 1.1;//add 10% of String height between the two strings
-
-        g2d.setFont(subinfoFont);
-        g2d.drawString(SUB_INFO,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - subinfo2Rect.getWidth()) / 2;
-        sY += (int) subinfoRect.getHeight() * 1.1;//add 10% of String height between the two strings
-
-        g2d.setFont(subinfoFont);
-        g2d.drawString(SUB_INFO2,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - subinfo3Rect.getWidth()) / 2;
-        sY += (int) subinfoRect.getHeight() * 1.1;//add 10% of String height between the two strings
-
-        g2d.setFont(subinfoFont);
-        g2d.drawString(SUB_INFO3,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - subinfo4Rect.getWidth()) / 2;
-        sY += (int) subinfoRect.getHeight() * 1.1;//add 10% of String height between the two strings
-
-        g2d.setFont(subinfoFont);
-        g2d.drawString(SUB_INFO4,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - subinfo5Rect.getWidth()) / 2;
-        sY += (int) subinfoRect.getHeight() * 1.1;//add 10% of String height between the two strings
-
-        g2d.setFont(subinfoFont);
-        g2d.drawString(SUB_INFO5,sX,sY);
-
-        sX = (int)(menuFace.getWidth() - subinfo6Rect.getWidth()) / 2;
-        sY += (int) subinfoRect.getHeight() * 1.1;//add 10% of String height between the two strings
-
-        g2d.setFont(subinfoFont);
-        g2d.drawString(SUB_INFO6,sX,sY);
-
-
-
+        hsText.setSize(600,200);
+        hsText.setLocation(300,200);
+        HighScore hs = new HighScore();
+        hsText.setText(hs.getHsString());
+        this.add(hsText);
     }
 
     /**
      * creates and draws buttons
-     * @param g2d draws button inside menu
+     * @param g2d draws button inside High score
      */
     private void drawButton(Graphics2D g2d){
 
@@ -264,7 +219,7 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
 
     /**
      * paints info menu
-     * @param g draws info menu
+     * @param g draws info High score
      */
     public void paint(Graphics g){
 
@@ -353,6 +308,4 @@ public class InfoPage extends JComponent implements MouseListener, MouseMotionLi
             this.setCursor(Cursor.getDefaultCursor());
 
     }
-
 }
-

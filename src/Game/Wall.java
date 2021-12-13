@@ -29,7 +29,16 @@ public class Wall {
     private int brickCount;
     private int ballCount;
     private boolean ballLost;
+    public int score=0;
 
+    /**
+     * creates the wall which the ball bounces off of
+     * @param drawArea draws area of wall
+     * @param brickCount how many bricks in the level
+     * @param lineCount how many lines of brick in a level
+     * @param brickDimensionRatio whats is the dimensions of brick
+     * @param ballPos what is the starting ball position
+     */
     public Wall(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos){
 
         this.startPoint = new Point(ballPos);
@@ -61,15 +70,25 @@ public class Wall {
     }
 
 
+    /**
+     * makes ball
+     * @param ballPos what is the starting ball position
+     */
     private void makeBall(Point2D ballPos){
         ball = new RubberBall(ballPos);
     }
 
+    /**
+     *lets player paddle and ball move
+     */
     public void move(){
         player.move();
         ball.move();
     }
 
+    /**
+     * will find where the ball has impact with in wall, in player or in brick
+     */
     public void findImpacts(){
         if(player.impact(ball)){
             ball.reverseY();
@@ -77,6 +96,7 @@ public class Wall {
         else if(impactWall()){
 
             brickCount--;
+            score++;
         }
         else if(impactBorder()) {
             ball.reverseX();
@@ -90,6 +110,9 @@ public class Wall {
         }
     }
 
+    /**
+     * impact with wall reverses ball direction
+     */
     private boolean impactWall(){
         for(Brick b : bricks){
             switch(b.findImpact(ball)) {
@@ -113,6 +136,9 @@ public class Wall {
         return false;
     }
 
+    /**
+     * impact with border change ball direction
+     */
     private boolean impactBorder(){
         Point2D p = ball.getPosition();
         return ((p.getX() < area.getX()) ||(p.getX() > (area.getX() + area.getWidth())));
@@ -130,6 +156,9 @@ public class Wall {
         return ballLost;
     }
 
+    /**
+     * will reset ball position when button is pressed or when ball is lost
+     */
     public void ballReset(){
         player.moveTo(startPoint);
         ball.moveTo(startPoint);
@@ -145,6 +174,9 @@ public class Wall {
         ballLost = false;
     }
 
+    /**
+     * will reset level
+     */
     public void wallReset(){
         for(Brick b : bricks)
             b.repair();
@@ -152,19 +184,31 @@ public class Wall {
         ballCount = 3;
     }
 
+    /**
+     * game ends when ball count is 0
+     */
     public boolean ballEnd(){
         return ballCount == 0;
     }
 
+    /**
+     * when all bricks are broken, level ends
+     */
     public boolean isDone(){
         return brickCount == 0;
     }
 
+    /**
+     * next level will be initiated when either skip level is pressed or all bricks are gone
+     */
     public void nextLevel(){
         bricks = levels[level++];
         this.brickCount = bricks.length;
     }
 
+    /**
+     * available levels less that the max amount of levels
+     */
     public boolean hasLevel(){
         return level < levels.length;
     }
@@ -177,10 +221,19 @@ public class Wall {
         ball.setYSpeed(s);
     }
 
+    /**
+     * resets ball count to 3
+     */
     public void resetBallCount(){
         ballCount = 3;
     }
 
+    /**
+     * creates brick
+     * @param point psoition of brick
+     * @param size size of brick
+     * @param type type of brick
+     */
     static Brick makeBrick(Point point, Dimension size, int type){
         Brick out;
         switch(type){
