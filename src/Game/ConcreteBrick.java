@@ -15,17 +15,33 @@ public class ConcreteBrick extends Brick {
     private Shape brickFace;
 
 
+    /**
+     * initialise default value for Concrete brick
+     * @param point where the brick will be
+     * @param size size of the brick
+     */
     public ConcreteBrick(Point point, Dimension size){
         super(NAME,point,size,DEF_BORDER,DEF_INNER,CONCRETE_STRENGTH);
         crack = new Crack(DEF_CRACK_DEPTH,DEF_STEPS);
         brickFace = super.brickFace;
     }
 
+    /**
+     * makes the brick shape
+     * @param pos  position of brick
+     * @param size size of brick
+     * @return returns position of brick in a  form of a rectangle
+     */
     @Override
     protected Shape makeBrickFace(Point pos, Dimension size) {
         return new Rectangle(pos,size);
     }
 
+    /**
+     * setup impact and break system
+     * @param point point of impact
+     * @param dir   direction of impact
+     */
     @Override
     public boolean setImpact(Point2D point, int dir) {
         if(super.isBroken())
@@ -40,11 +56,18 @@ public class ConcreteBrick extends Brick {
     }
 
 
+    /**
+     * gets the shape of the brick
+     * @return returns referenced brickface
+     */
     @Override
     public Shape getBrick() {
         return brickFace;
     }
 
+    /**
+     * updates wether or not brick is cracked or broken and draws crack
+     */
     private void updateBrick(){
         if(!super.isBroken()){
             GeneralPath gp = crack.draw();
@@ -53,6 +76,9 @@ public class ConcreteBrick extends Brick {
         }
     }
 
+    /**
+     * repairs crack and break in brick
+     */
     public void repair(){
         super.repair();
         crack.reset();

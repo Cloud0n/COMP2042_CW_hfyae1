@@ -24,6 +24,14 @@ abstract public class Ball {
     private int radiusA;
     private int radiusB;
 
+    /**
+     * Sets the values of the ball
+     * @param center Position of the ball
+     * @param radiusA Radius of the ball
+     * @param radiusB Radius of the ball
+     * @param inner inside color of the ball
+     * @param border Border color of the ball
+     */
     public Ball(Point2D center,int radiusA,int radiusB,Color inner,Color border){
         this.center = center;
         this.radiusA = radiusA;
@@ -51,8 +59,18 @@ abstract public class Ball {
         speedY = 0;
     }
 
+    /**
+     * creates the ball
+     * @param center Position of the ball
+     * @param radiusA Radius of the ball
+     * @param radiusB Radius of the ball
+     * @return
+     */
     protected abstract Shape makeBall(Point2D center,int radiusA,int radiusB);
 
+    /**
+     * Sets the movement physics of the ball
+     */
     public void move(){
         RectangularShape tmp = (RectangularShape) ballFace;
         center.setLocation((center.getX() + speedX),(center.getY() + speedY));
@@ -66,6 +84,10 @@ abstract public class Ball {
         ballFace = tmp;
     }
 
+    /**
+     * @param x sets the x speeed of the ball
+     * @param y sets the y speed of the ball
+     */
     public void setSpeed(int x,int y){
         speedX = x;
         speedY = y;
@@ -125,6 +147,10 @@ abstract public class Ball {
 
     public void setBallFace(Shape ballFace){this.ballFace=ballFace;}
 
+    /**
+     *  Forces the ball to a set position in the beginning of the game
+     * @param p A specific point in the game
+     */
     public void moveTo(Point p){
         center.setLocation(p);
 
@@ -136,6 +162,11 @@ abstract public class Ball {
         ballFace = tmp;
     }
 
+    /**
+     * sets location of rectangle(player)
+     * @param width width of rectangle
+     * @param height height of rectangle
+     */
     private void setPoints(double width,double height){
         up.setLocation(center.getX(),center.getY()-(height / 2));
         down.setLocation(center.getX(),center.getY()+(height / 2));

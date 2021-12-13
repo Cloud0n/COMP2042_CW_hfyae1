@@ -24,32 +24,54 @@ public class PauseMenu {
     private Font menuFont;
 
     private GameBoard GameBoard;
+
+
+    /**
+     * sess font for pause menu
+     * @param Gameboard sets font for pause menu
+     */
     public PauseMenu(GameBoard Gameboard){
         this.GameBoard=Gameboard;
         menuFont = new Font("Monospaced",Font.PLAIN,TEXT_SIZE);
 
     }
 
+    /**
+     * creates a continue button that excecutes "continueButtonRect"
+     */
     public Rectangle ContinueButton(){
         return continueButtonRect;
 
     }
 
+    /**
+     * creates an exit button that excecutes "exitButtonRect"
+     */
     public Rectangle ExitButton(){
         return exitButtonRect;
 
     }
 
+    /**
+     * creates a restart button that excecutes "restartButtonRect"
+     */
     public Rectangle RestartButton(){
         return restartButtonRect;
 
     }
 
+    /**
+     * @param g2d draws menu mechanics
+     */
     public void drawMenu(Graphics2D g2d){
         obscureGameBoard(g2d);
         drawPauseMenu(g2d);
     }
 
+    /**
+     * draws and sets colour for pause menu
+     * @param g2d draws pause menu
+     */
     private void obscureGameBoard(Graphics2D g2d){
 
         Composite tmp = g2d.getComposite();
@@ -65,6 +87,10 @@ public class PauseMenu {
         g2d.setColor(tmpColor);
     }
 
+    /**
+     * draws the buttons and things inside the pause menu
+     * @param g2d draws the buttons and things inside the pause menu
+     */
     private void drawPauseMenu(Graphics2D g2d){
         Font tmpFont = g2d.getFont();
         Color tmpColor = g2d.getColor();

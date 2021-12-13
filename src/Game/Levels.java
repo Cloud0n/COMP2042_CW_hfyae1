@@ -8,10 +8,28 @@ public class Levels extends Wall {
 
     private static final int LEVELS_COUNT = 9;
 
+    /**
+     * creates levels
+     * @param drawArea draws rectangle for brick
+     * @param brickCount how many bricks in the level
+     * @param lineCount how many lines of brick in a level
+     * @param brickDimensionRatio whats is the dimensions of brick
+     * @param ballPos what is the starting ball position
+     */
     public Levels(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio, Point ballPos) {
         super(drawArea, brickCount, lineCount, brickDimensionRatio, ballPos);
     }
 
+    /**
+     * creates level
+     * @param drawArea draws rectangle for brick
+     * @param brickCnt how many bricks in the level
+     * @param lineCnt how many lines of brick in a level
+     * @param brickSizeRatio whats is the size of brick
+     * @param typeA brick types
+     * @param typeB brick types
+     * @return
+     */
     private static Brick[] makeLevel(Rectangle drawArea, int brickCnt, int lineCnt, double brickSizeRatio, int typeA, int typeB){
 
         brickCnt -= brickCnt % lineCnt;
@@ -53,6 +71,14 @@ public class Levels extends Wall {
         }
         return tmp;
     }
+
+    /**
+     * creates the levels by specifying all the values of bricks and lines of bricks and so on
+     * @param drawArea draws area of bricks
+     * @param brickCount how many bricks in the level
+     * @param lineCount how many lines of brick in a level
+     * @param brickDimensionRatio whats is the dimensions of brick
+     */
     public static Brick[][] makeLevels(Rectangle drawArea, int brickCount, int lineCount, double brickDimensionRatio){
         Brick[][] tmp = new Brick[LEVELS_COUNT][];
         tmp[0] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CLAY);
@@ -63,7 +89,7 @@ public class Levels extends Wall {
         tmp[5] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CLAY,CONCRETE);
         tmp[6] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CONCRETE,CEMENT);
         tmp[7] = makeLevel(drawArea,brickCount,lineCount,brickDimensionRatio,CARBON,STEEL);
-        tmp[8] = makeLevel(drawArea,200,20,brickDimensionRatio,CARBON,CARBON);
+        tmp[8] = makeLevel(drawArea,180,18,brickDimensionRatio,CARBON,CARBON);
         return tmp;
     }
 }
